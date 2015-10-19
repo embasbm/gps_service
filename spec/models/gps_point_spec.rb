@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GpsPoint, :type => :model do
-  describe 'fields' do
+  context 'fields' do
     gps_point = GpsPoint.new(latitude: '', longitude: '')
     it 'latitude is missing, record is nil' do
       expect(gps_point).not_to be_valid

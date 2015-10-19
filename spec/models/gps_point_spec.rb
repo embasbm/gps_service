@@ -28,4 +28,12 @@ RSpec.describe GpsPoint, :type => :model do
       expect(gps_point).to be_valid
     end
   end
+  context 'duplicate gps point' do
+    it 'record is valid if both fields are present' do
+      gps_point = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504')
+      expect(gps_point).to be_valid
+      gps_point_dup = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504')
+      expect(gps_point_dup).not_to be_valid
+    end
+  end
 end

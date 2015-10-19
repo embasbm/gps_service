@@ -10,7 +10,7 @@ RSpec.describe Trace, :type => :model do
   context 'contains points' do
     it 'may content more than one ' do
       gps_point_1 = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504', trace_id: @trace.id)
-      gps_point_2 = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504', trace_id: @trace.id)
+      gps_point_2 = GpsPoint.create(latitude: '118.230323791504', longitude: '118.230323791504', trace_id: @trace.id)
       expect(@trace.gps_points.count).to eq(2)
     end
   end

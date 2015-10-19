@@ -1,4 +1,4 @@
 class GpsPoint < ActiveRecord::Base
-  validates :latitude, :longitude, :presence => true
+  validates :latitude, uniqueness: {scope: :longitude}, :presence => true
   belongs_to :trace
 end

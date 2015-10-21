@@ -38,8 +38,8 @@ class TracesController < ApplicationController
 
   def show
     trace = Trace.find(params[:id])
-    gps_points = trace.gps_points
-    render json: trace.as_json(include: gps_points.as_json), status: :ok
+    pgs_points_collection = trace.get_distances
+    render json: pgs_points_collection.as_json, status: :ok
   end
 
   def destroy

@@ -33,6 +33,8 @@ gem 'responders'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'geokit-rails'
+
 group :development, :test do
   # => https://github.com/rspec/rspec-rails
   gem 'rspec-rails', '~> 3.0'

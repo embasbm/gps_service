@@ -18,6 +18,7 @@ class TracesController < ApplicationController
         )
       end
       trace.update_distances
+      set_points_elevations(trace)
       render json: trace.as_json, status: :created
     else
       render json: trace.as_json(include: errors), status: :unprocessable_entity
@@ -40,6 +41,7 @@ class TracesController < ApplicationController
       )
     end
     trace.update_distances
+    set_points_elevations(trace)
     render json: trace, status: :ok
   end
 
@@ -63,5 +65,11 @@ class TracesController < ApplicationController
 
   def set_points_collection
     @gps_points_set = params[:_json].present? ? params[:_json] : []
+  end
+
+  def set_points_elevations(trace)
+    remote_api = RemoteApi.new
+    elevations   = JSON.parse(remote_api.bulk_request(@gps_points_set))
+    trace.update_elevations(elevations)
   end
 end

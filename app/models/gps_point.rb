@@ -1,5 +1,5 @@
 class GpsPoint < ActiveRecord::Base
-  validates :latitude, uniqueness: {scope: :longitude}, :presence => true
+  validates_presence_of :latitude, :longitude
   belongs_to :trace
 
   acts_as_mappable :distance_field_name => :distance,

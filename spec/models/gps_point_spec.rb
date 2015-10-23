@@ -33,7 +33,7 @@ RSpec.describe GpsPoint, :type => :model do
       gps_point = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504')
       expect(gps_point).to be_valid
       gps_point_dup = GpsPoint.create(latitude: '117.230323791504', longitude: '117.230323791504')
-      expect(gps_point_dup).not_to be_valid
+      expect(gps_point_dup).to be_valid
     end
   end
 end

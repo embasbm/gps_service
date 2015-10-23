@@ -3,7 +3,7 @@ class TracesController < ApplicationController
   before_action :set_points_collection, only: [:create, :update]
 
   def index
-    traces = Trace.all.collect {|trace| trace.get_distances}
+    traces = Trace.all.collect {|trace| trace.get_collection}
     render json: traces.as_json, status: :ok
   end
 
@@ -17,6 +17,7 @@ class TracesController < ApplicationController
             trace_id: trace.id
         )
       end
+      trace.update_distances
       render json: trace.as_json, status: :created
     else
       render json: trace.as_json(include: errors), status: :unprocessable_entity
@@ -38,12 +39,13 @@ class TracesController < ApplicationController
           trace_id: trace.id
       )
     end
+    trace.update_distances
     render json: trace, status: :ok
   end
 
   def show
     trace = Trace.find(params[:id])
-    pgs_points_collection = trace.get_distances
+    pgs_points_collection = trace.get_collection
     render json: pgs_points_collection.as_json, status: :ok
   end
 

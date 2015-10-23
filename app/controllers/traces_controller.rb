@@ -3,8 +3,8 @@ class TracesController < ApplicationController
   before_action :set_points_collection, only: [:create, :update]
 
   def index
-    traces = Trace.all
-    render json: traces, status: :ok
+    traces = Trace.all.collect {|trace| trace.get_distances}
+    render json: traces.as_json, status: :ok
   end
 
   def create

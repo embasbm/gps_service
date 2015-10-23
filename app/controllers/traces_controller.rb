@@ -25,7 +25,12 @@ class TracesController < ApplicationController
 
   def update
     trace = Trace.find(params[:id])
-    trace.gps_points.destroy_all unless trace.gps_points.empty?
+
+    # assuming that when an empty file is passed to PUT action, we want to delete trace gps points
+    if !trace.gps_points.empty? || @gps_points_set.empty?
+      trace.gps_points.destroy_all
+    end
+
     @gps_points_set.each do |gps_point|
       GpsPoint.find_or_create_by!(
           latitude: gps_point[:latitude],
@@ -55,7 +60,6 @@ class TracesController < ApplicationController
   private
 
   def set_points_collection
-    # assuming that when an empty file is passed to PUT action, we want to delete trace gps points
     @gps_points_set = params[:_json].present? ? params[:_json] : []
   end
 end

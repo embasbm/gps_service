@@ -37,6 +37,8 @@ gem 'geokit-rails'
 
 gem 'em-http-request'
 
+gem "figaro"
+
 group :development, :test do
   # => https://github.com/rspec/rspec-rails
   gem 'rspec-rails', '~> 3.0'

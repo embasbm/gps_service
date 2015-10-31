@@ -1,0 +1,10 @@
+defaults: &defaults
+  RUNTASTIC_API_URL: 'https://codingcontest.runtastic.com/api/elevations/'
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

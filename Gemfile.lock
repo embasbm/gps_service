@@ -63,6 +63,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
+    figaro (1.1.0)
+      thor (~> 0.14)
     geokit (1.10.0)
     geokit-rails (2.1.0)
       geokit (~> 1.5)
@@ -177,6 +179,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   em-http-request
+  figaro
   geokit-rails
   jbuilder (~> 2.0)
   jquery-rails

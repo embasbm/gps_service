@@ -1,6 +1,5 @@
 class RemoteApi
 
-  RUNTASTIC_API_URL = 'https://codingcontest.runtastic.com/api/elevations/'
   EVENT_MACHINE_OPTIONS = {
       connect_timeout: 120,
       inactivity_timeout: 120
@@ -11,11 +10,11 @@ class RemoteApi
 
 
   def single_request(point)
-    elevation = query_remote(URI.parse(RUNTASTIC_API_URL + '/' + point.latitude + '/' + point.longitude))
+    elevation = query_remote(URI.parse(ENV['RUNTASTIC_API_URL'] + '/' + point.latitude + '/' + point.longitude))
   end
 
   def bulk_request(points_collection)
-    elevations_collection = query_remote(URI.parse(RUNTASTIC_API_URL + 'bulk'), points_collection)
+    elevations_collection = query_remote(URI.parse(ENV['RUNTASTIC_API_URL'] + 'bulk'), points_collection)
   end
 
   private
